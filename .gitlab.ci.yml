@@ -15,6 +15,7 @@ jest:
         - yarn test:unit
 
 cypress:
+    image: edimossilva/node-angular-cypress
     stage: test
     before_script:
         - yarn
