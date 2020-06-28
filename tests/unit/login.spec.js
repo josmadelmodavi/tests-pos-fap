@@ -17,19 +17,35 @@ describe('Login', () => {
           expect(wrapper.vm.isLoginCompleted).toBe(true);
         });
       });
-      // describe('password are NOT valid', () => {
-      //   it('should be false when password length is lesser than 6', () => {
+      describe('Email and Password are NOT valids', () => {
+        it('should be false', () => {
+          const wrapper = shallowMount(Login, {
+            data: () => ({ email: 'josmadelmodavigmailcom', password: '1234' }),
+          });
+          expect(wrapper.vm.isLoginCompleted).toBe(false);
+        });
+      });
+      // describe('Email is NOT valid', () => {
+      //   it('should be false when email format is not valid', () => {
       //     const wrapper = shallowMount(Login, {
-      //       data: () => ({ password: '123456' }),
+      //       data: () => ({ email: 'josmadelmodavigmail.com' }),
       //     });
       //     expect(wrapper.vm.isLoginCompleted).toBe(false);
       //   });
-      //   it('should be true when password length is lesser than 6', () => {
+      // });
+      // describe('Password is NOT valid', () => {
+      //   it('should be false when password length is less than 6 characters', () => {
       //     const wrapper = shallowMount(Login, {
-      //       data: () => ({ password: '12' }),
+      //       data: () => ({ password: '123' }),
       //     });
-      //     expect(wrapper.vm.isLoginCompleted).toBe(true);
+      //     expect(wrapper.vm.isLoginCompleted).toBe(false);
       //   });
+      // //   it('should be true when password length is lesser than 6', () => {
+      // //     const wrapper = shallowMount(Login, {
+      // //       data: () => ({ password: '12' }),
+      // //     });
+      // //     expect(wrapper.vm.isLoginCompleted).toBe(true);
+      // //   });
       // });
     });
   });

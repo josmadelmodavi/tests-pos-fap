@@ -39,7 +39,8 @@ export default {
 
   computed: {
     isLoginCompleted() {
-      const { isValidEmail, isValidPassword } = this;
+      const { isValidEmail } = this;
+      const { isValidPassword } = this;
       return isValidEmail(this.email) && isValidPassword(this.password);
     },
   },
