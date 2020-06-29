@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>Login</h1>
-    <!-- <p v-show="isEmailInvalid" class="form__p_error_message">
-      Error: Email {{fullname}} is not valid</p> -->
-    <!-- <p v-show="isPasswordInvalid" class="form__p_error_message">
-      Error: Password is less than 6 characters</p> -->
+    <p v-show="!isEmailError" class="form__p_error_message">
+      Error: <u>{{email}}</u> is not valid email</p>
+    <p v-show="!isPasswordError" class="form__p_error_message">
+      Error: Password is less than 6 characters</p>
     <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
       Error: This account does not exist</p> -->
     <div>
@@ -38,6 +38,14 @@ export default {
   }),
 
   computed: {
+    isEmailError() {
+      const { isValidEmail, email } = this;
+      return isValidEmail(email);
+    },
+    isPasswordError() {
+      const { isValidPassword, password } = this;
+      return isValidPassword(password);
+    },
     isLoginCompleted() {
       const { isValidEmail } = this;
       const { isValidPassword } = this;
@@ -47,7 +55,7 @@ export default {
 
   methods: {
     isValidEmail(string) {
-      const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
       return !!string.match(emailRegex);
     },
     isValidPassword(string) {
@@ -61,5 +69,7 @@ export default {
 </script>
 
 <style>
-
+.form__p_error_message, .form__p_error_message {
+  color:brown;
+}
 </style>
