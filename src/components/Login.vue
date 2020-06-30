@@ -83,13 +83,19 @@ export default {
   color: dimgrey;
 }
 .form__input_email,
-.form__input_password {
+.form__input_password,
+.form__input_age,
+.form__select_os {
   width: 250px;
   height: 30px;
   font-size: 1.1em;
 }
+.form__select_os {
+  width: 258px;
+  height: 34px;
+}
 .form__button_go_user_form,
-.form__button_block {
+.form__button_disabled {
   width: 258px;
   height: 30px;
   font-size: 1.1em;
@@ -107,5 +113,13 @@ export default {
 .form__button_disabled {
   background-color: slategray;
   border: none;
+}
+.form__p_success_message {
+  color: green;
+  font-size: 1.2em;
+  animation: flash 1s linear infinite;
+}
+@keyframes flash {
+  50% { opacity: 0; }
 }
 </style>

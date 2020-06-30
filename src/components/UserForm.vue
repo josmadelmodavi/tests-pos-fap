@@ -8,36 +8,42 @@
     <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
       Error: This account does not exist</p> -->
     <div>
-      <label>Email: {{email}}</label><br />
+      <label>Email:</label><br />
       <input
         v-model="email"
         class="form__input_email"
         type="email"
         name="formEmail"
         autofocus="autofocus"
+        placeholder="mail@example.com"
       /><br /><br />
     </div>
     <div>
       <label>Age:</label><br />
-      <input v-model="age" class="form__input_age" type="text" name="formAge" /><br /><br />
+      <input
+        v-model="age"
+        class="form__input_age"
+        type="number"
+        name="formAge"
+        min="18"
+        max="99"
+        placeholder="Enter your age"
+      /><br /><br />
     </div>
     <div>
       <label>OS:</label><br />
-      <select v-model="os">
-        <option disabled value="">Chose</option>
-        <option>Windows</option>
+      <select v-model="os" class="form__select_os">
+        <option disabled value="">Chose a item</option>
         <option>Linux</option>
-      </select>
-      <input v-model="os" class="form__input_age" type="text" name="formAge" /><br /><br />
+        <option>Windows</option>
+      </select><br />
     </div>
-    <button @click="goToUserForm" class="form__button_go_user_form">Login</button>
+    <p v-show="!isFormCompleted" class="form__p_success_message">
+      Congratulations!
+    </p>
   </div>
 </template>
 
-<script>
+<script></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>
