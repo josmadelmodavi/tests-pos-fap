@@ -30,7 +30,12 @@
         placeholder="Enter password"
       /><br /><br />
     </div>
-    <button @click="goToUserForm" class="form__button_go_user_form">Login</button>
+    <button v-show="isLoginCompleted" @click="goToUserForm" class="form__button_go_user_form">
+      Login
+    </button>
+    <button v-show="!isLoginCompleted" class="form__button_disabled" disabled>
+      Login
+    </button>
   </div>
 </template>
 
@@ -43,8 +48,8 @@ export default {
 
   computed: {
     isEmailOk() {
-      const { isValidEmail, email, isMinStringEmail } = this;
-      return isValidEmail(email) && isMinStringEmail(email);
+      const { isValidEmail, email } = this;
+      return isValidEmail(email);
     },
     isPasswordError() {
       const { isValidPassword, password } = this;
@@ -65,9 +70,6 @@ export default {
     isValidPassword(string) {
       return string.length >= 6;
     },
-    isMinStringEmail(string) {
-      return string.length > 6;
-    },
     goToUserForm() {
       this.$router.push({ name: 'UserForm' });
     },
@@ -79,5 +81,31 @@ export default {
 .form__p_error_message,
 .form__p_error_message {
   color: dimgrey;
+}
+.form__input_email,
+.form__input_password {
+  width: 250px;
+  height: 30px;
+  font-size: 1.1em;
+}
+.form__button_go_user_form,
+.form__button_block {
+  width: 258px;
+  height: 30px;
+  font-size: 1.1em;
+  background-color: mediumseagreen;
+  color: white;
+  border: 2px solid seagreen;
+  border-radius: 3px;
+  transition: filter 0.2s, background-color 0.2s;
+}
+.form__button_go_user_form:hover,
+.form__button_go_user_form:focus {
+  filter: brightness(90%);
+  background-color: seagreen;
+}
+.form__button_disabled {
+  background-color: slategray;
+  border: none;
 }
 </style>

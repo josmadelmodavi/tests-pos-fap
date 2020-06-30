@@ -8,7 +8,7 @@
     <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
       Error: This account does not exist</p> -->
     <div>
-      <label>Email:</label><br />
+      <label>Email: {{email}}</label><br />
       <input
         v-model="email"
         class="form__input_email"
