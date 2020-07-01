@@ -37,8 +37,8 @@
       <label>OS:</label><br />
       <select v-model="os" class="form__select_os" name="formOs">
         <option disabled value="">Chose a item</option>
-        <option v-for="item in items" :key="item.value">{{ item.value }}</option>
-      </select><br />
+        <option v-for="item in items" :key="item.value">{{ item.value }}</option> </select
+      ><br />
     </div>
     <p v-show="isFormCompleted" class="form__p_success_message">
       Congratulations!
@@ -52,10 +52,7 @@ export default {
     email: '',
     age: '',
     os: '',
-    items: [
-      { value: 'Linux' },
-      { value: 'Windows' },
-    ],
+    items: [{ value: 'Linux' }, { value: 'Windows' }],
   }),
 
   computed: {

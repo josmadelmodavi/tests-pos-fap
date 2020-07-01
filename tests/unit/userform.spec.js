@@ -37,7 +37,23 @@ describe('UserForm', () => {
           describe('When age is NOT valid', () => {
             it('should return false', () => {
               const wrapper = shallowMount(UserForm);
-              expect(wrapper.vm.isValidAge('17')).not.toBe(false);
+              expect(wrapper.vm.isValidAge('15')).not.toBe(false);
+            });
+          });
+        });
+
+        describe('isValidOs', () => {
+          describe('When OS is selected', () => {
+            it('should return true', () => {
+              const wrapper = shallowMount(UserForm);
+              expect(wrapper.vm.isValidOs('Linux')).toBe(true);
+            });
+          });
+
+          describe('When OS is NOT selected', () => {
+            it('should return false', () => {
+              const wrapper = shallowMount(UserForm);
+              expect(wrapper.vm.isValidOs('')).toBe(false);
             });
           });
         });
