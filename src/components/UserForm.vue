@@ -1,12 +1,15 @@
 <template>
   <div>
     <h1>UserForm</h1>
-    <!-- <p v-show="isEmailInvalid" class="form__p_error_message">
-      Error: Email {{fullname}} is not valid</p> -->
-    <!-- <p v-show="isPasswordInvalid" class="form__p_error_message">
-      Error: Password is less than 6 characters</p> -->
-    <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
-      Error: This account does not exist</p> -->
+    <p v-show="!isEmailOk" class="form__p_error_message">
+      Note: enter a valid email
+    </p>
+    <p v-show="isAgeOk" class="form__p_error_message">
+      Note: enter an age between 18 and 99 years
+    </p>
+    <p v-show="!isOsOk" class="form__p_error_message">
+      Note: choose the OS
+    </p>
     <div>
       <label>Email:</label><br />
       <input
@@ -35,8 +38,8 @@
       <select v-model="os" class="form__select_os">
         <option disabled value="">Chose a item</option>
         <option>Linux</option>
-        <option>Windows</option>
-      </select><br />
+        <option>Windows</option> </select
+      ><br />
     </div>
     <p v-show="!isFormCompleted" class="form__p_success_message">
       Congratulations!
@@ -44,6 +47,43 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data: () => ({
+    email: '',
+    age: '',
+    os: '',
+  }),
+
+  computed: {
+    isEmailOk() {
+      const { isValidEmail, email, minLength } = this;
+      return isValidEmail(email) && minLength(email);
+    },
+    isAgeOk() {
+      const { isValidAge, age } = this;
+      return isValidAge(age);
+    },
+    isOsOk() {
+      const { isValidEmail } = this;
+      const { isValidPassword } = this;
+      return isValidEmail(this.email) && isValidPassword(this.password);
+    },
+  },
+
+  methods: {
+    minLength(string) {
+      return string.length > 0;
+    },
+    isValidEmail(string) {
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
+      return !!string.match(emailRegex);
+    },
+    isValidAge(age) {
+      return age < 17 || age > 99;
+    },
+  },
+};
+</script>
 
 <style></style>

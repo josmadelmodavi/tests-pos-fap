@@ -17,6 +17,7 @@ describe('Login', () => {
           expect(wrapper.vm.isLoginCompleted).toBe(true);
         });
       });
+
       describe('Email and Password are NOT valids', () => {
         it('should be false', () => {
           const wrapper = shallowMount(Login, {
@@ -25,66 +26,42 @@ describe('Login', () => {
           expect(wrapper.vm.isLoginCompleted).toBe(false);
         });
       });
-      // describe('Email is NOT valid', () => {
-      //   it('should be false when email format is not valid', () => {
-      //     const wrapper = shallowMount(Login, {
-      //       data: () => ({ email: 'josmadelmodavigmail.com' }),
-      //     });
-      //     expect(wrapper.vm.isLoginCompleted).toBe(false);
-      //   });
-      // });
-      // describe('Password is NOT valid', () => {
-      //   it('should be false when password length is less than 6 characters', () => {
-      //     const wrapper = shallowMount(Login, {
-      //       data: () => ({ password: '123' }),
-      //     });
-      //     expect(wrapper.vm.isLoginCompleted).toBe(false);
-      //   });
-      // //   it('should be true when password length is lesser than 6', () => {
-      // //     const wrapper = shallowMount(Login, {
-      // //       data: () => ({ password: '12' }),
-      // //     });
-      // //     expect(wrapper.vm.isLoginCompleted).toBe(true);
-      // //   });
-      // });
+
+      describe('Validations', () => {
+        describe('isValidEmail', () => {
+          describe('When email is valid', () => {
+            it('should return true', () => {
+              const wrapper = shallowMount(Login);
+              expect(wrapper.vm.isValidEmail('josmadelmodavi@gmail.com')).toBe(true);
+            });
+          });
+
+          describe('When email is NOT valid', () => {
+            it('should return false', () => {
+              const wrapper = shallowMount(Login);
+              expect(wrapper.vm.isValidEmail('josmadelmodavigmailcom')).toBe(false);
+            });
+          });
+        });
+
+        describe('isValidPassword', () => {
+          describe('When password is valid', () => {
+            it('should return true', () => {
+              const wrapper = shallowMount(Login);
+              expect(wrapper.vm.isValidPassword('123456')).toBe(true);
+            });
+          });
+
+          describe('When password is NOT valid', () => {
+            it('should return false', () => {
+              const wrapper = shallowMount(Login);
+              expect(wrapper.vm.isValidPassword('12')).toBe(false);
+            });
+          });
+        });
+      });
     });
   });
-
-  // describe('computed', () => {
-  //     describe('isLoginCompleted', () => {
-  //         describe('password are NOT valid', () => {
-  //           it('should be false when password length is lesser than 6', () => {
-  //             const wrapper = shallowMount(Login, {
-  //               data: () => ({ password: '123456' }),
-  //             });
-  //             expect(wrapper.vm.isLoginCompleted).toBe(false);
-  //           });
-  //           it('should be true when password length is lesser than 6', () => {
-  //             const wrapper = shallowMount(Login, {
-  //               data: () => ({ password: '12' }),
-  //             });
-  //             expect(wrapper.vm.isLoginCompleted).toBe(true);
-  //           });
-  //         });
-  //     });
-  // });
-
-  // describe('Validations', () => {
-  //     describe('isValidEmail', () => {
-  //       describe('When email is valid', () => {
-  //         it('should return true', () => {
-  //           const wrapper = shallowMount(Login);
-  //           expect(wrapper.vm.isValidEmail('josmadelmodavi@gmail.com')).toBe(true);
-  //         });
-  //       });
-  //       describe('When email is NOT valid', () => {
-  //         it('should return false', () => {
-  //           const wrapper = shallowMount(Login);
-  //           expect(wrapper.vm.isValidEmail('josmadelmodavigmailcom')).toBe(false);
-  //         });
-  //       });
-  //     });
-  // });
   it('!!', () => {
     expect(!!false).toBe(false);
     expect(!!NaN).toBe(false);

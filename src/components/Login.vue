@@ -4,7 +4,7 @@
     <p v-show="!isEmailOk" class="form__p_error_message">
       Note: enter a valid email
     </p>
-    <p v-show="!isPasswordError" class="form__p_error_message">
+    <p v-show="!isPasswordOk" class="form__p_error_message">
       Note: enter a password longer than 6 characters
     </p>
     <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
@@ -48,10 +48,10 @@ export default {
 
   computed: {
     isEmailOk() {
-      const { isValidEmail, email } = this;
-      return isValidEmail(email);
+      const { isValidEmail, email, minLength } = this;
+      return isValidEmail(email) && minLength(email);
     },
-    isPasswordError() {
+    isPasswordOk() {
       const { isValidPassword, password } = this;
       return isValidPassword(password);
     },
@@ -63,6 +63,9 @@ export default {
   },
 
   methods: {
+    minLength(string) {
+      return string.length > 0;
+    },
     isValidEmail(string) {
       const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
       return !!string.match(emailRegex);
@@ -120,6 +123,8 @@ export default {
   animation: flash 1s linear infinite;
 }
 @keyframes flash {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 </style>
