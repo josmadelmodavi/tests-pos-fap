@@ -65,14 +65,14 @@ export default {
       return isValidAge(age);
     },
     isOsOk() {
-      const { isValidOs } = this;
-      return isValidOs(this.os);
+      const { isValidOs, os } = this;
+      return isValidOs(os);
     },
     isFormCompleted() {
-      const { isValidEmail } = this;
-      const { isValidAge } = this;
-      const { isValidOs } = this;
-      return isValidEmail(this.email) && !isValidAge(this.age) && isValidOs(this.os);
+      const { isValidEmail, email } = this;
+      const { isValidAge, age } = this;
+      const { isValidOs, os } = this;
+      return isValidEmail(email) && !isValidAge(age) && isValidOs(os);
     },
   },
 

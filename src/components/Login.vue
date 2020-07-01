@@ -56,9 +56,9 @@ export default {
       return isValidPassword(password);
     },
     isLoginCompleted() {
-      const { isValidEmail } = this;
-      const { isValidPassword } = this;
-      return isValidEmail(this.email) && isValidPassword(this.password);
+      const { isValidEmail, email } = this;
+      const { isValidPassword, password } = this;
+      return isValidEmail(email) && isValidPassword(password);
     },
   },
 
