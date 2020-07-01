@@ -35,10 +35,9 @@
     </div>
     <div>
       <label>OS:</label><br />
-      <select v-model="os" class="form__select_os" name="">
-        <option disabled value="null">Chose a item</option>
-        <option value="Linux">Linux</option>
-        <option value="Windows">Windows</option>
+      <select v-model="os" class="form__select_os" name="formOs">
+        <option disabled value="">Chose a item</option>
+        <option v-for="item in items" :key="item.value">{{ item.value }}</option>
       </select><br />
     </div>
     <p v-show="isFormCompleted" class="form__p_success_message">
@@ -53,6 +52,10 @@ export default {
     email: '',
     age: '',
     os: '',
+    items: [
+      { value: 'Linux' },
+      { value: 'Windows' },
+    ],
   }),
 
   computed: {
@@ -94,4 +97,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form__select_option_disabled {
+  color: rgb(255, 0, 0);
+}
+</style>
