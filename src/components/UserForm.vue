@@ -35,13 +35,13 @@
     </div>
     <div>
       <label>OS:</label><br />
-      <select v-model="os" class="form__select_os">
-        <option disabled value="">Chose a item</option>
-        <option>Linux</option>
-        <option>Windows</option> </select
-      ><br />
+      <select v-model="os" class="form__select_os" name="">
+        <option disabled value="null">Chose a item</option>
+        <option value="Linux">Linux</option>
+        <option value="Windows">Windows</option>
+      </select><br />
     </div>
-    <p v-show="!isFormCompleted" class="form__p_success_message">
+    <p v-show="isFormCompleted" class="form__p_success_message">
       Congratulations!
     </p>
   </div>
@@ -65,9 +65,14 @@ export default {
       return isValidAge(age);
     },
     isOsOk() {
+      const { isValidOs } = this;
+      return isValidOs(this.os);
+    },
+    isFormCompleted() {
       const { isValidEmail } = this;
-      const { isValidPassword } = this;
-      return isValidEmail(this.email) && isValidPassword(this.password);
+      const { isValidAge } = this;
+      const { isValidOs } = this;
+      return isValidEmail(this.email) && !isValidAge(this.age) && isValidOs(this.os);
     },
   },
 
@@ -79,8 +84,11 @@ export default {
       const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
       return !!string.match(emailRegex);
     },
-    isValidAge(age) {
-      return age < 17 || age > 99;
+    isValidAge(number) {
+      return number < 18 || number > 99;
+    },
+    isValidOs(string) {
+      return !(string === '');
     },
   },
 };
