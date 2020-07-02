@@ -4,7 +4,7 @@
     <p v-show="!isEmailOk" class="form__p_error_message">
       Note: enter a valid email
     </p>
-    <p v-show="isAgeOk" class="form__p_error_message">
+    <p v-show="!isAgeOk" class="form__p_error_message">
       Note: enter an age between 18 and 99 years
     </p>
     <p v-show="!isOsOk" class="form__p_error_message">
@@ -72,7 +72,7 @@ export default {
       const { isValidEmail, email } = this;
       const { isValidAge, age } = this;
       const { isValidOs, os } = this;
-      return isValidEmail(email) && !isValidAge(age) && isValidOs(os);
+      return isValidEmail(email) && isValidAge(age) && isValidOs(os);
     },
   },
 
@@ -85,7 +85,7 @@ export default {
       return !!string.match(emailRegex);
     },
     isValidAge(number) {
-      return number < 18 || number > 99;
+      return !(number < 18 || number > 99);
     },
     isValidOs(string) {
       return !(string === '');

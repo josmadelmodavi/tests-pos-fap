@@ -30,14 +30,14 @@ describe('UserForm', () => {
           describe('When age is valid', () => {
             it('should return true', () => {
               const wrapper = shallowMount(UserForm);
-              expect(wrapper.vm.isValidAge('25')).not.toBe(true);
+              expect(wrapper.vm.isValidAge('25')).toBe(true);
             });
           });
 
           describe('When age is NOT valid', () => {
             it('should return false', () => {
               const wrapper = shallowMount(UserForm);
-              expect(wrapper.vm.isValidAge('15')).not.toBe(false);
+              expect(wrapper.vm.isValidAge('15')).toBe(false);
             });
           });
         });
