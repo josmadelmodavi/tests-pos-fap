@@ -1,5 +1,5 @@
 describe('UserForm', () => {
-  const isValidEmail = 'josmadelmodavi@gmail.com';
+  const isValidEmail = 'email_10@gmail.com';
   const isValidAge = '25';
   const isValidOs = 'Linux';
 

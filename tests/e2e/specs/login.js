@@ -1,5 +1,5 @@
 describe('Login', () => {
-  const isValidEmail = 'josmadelmodavi@gmail.com';
+  const isValidEmail = 'email_99@gmail.com';
   const isValidPassword = '123456';
 
   describe('When visit login url', () => {
