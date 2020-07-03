@@ -1,4 +1,6 @@
-# pos-test
+# Tests (unit, e2e, lint)
+
+> Atividade de pós-graduação.
 
 ## Project setup
 ```
@@ -32,3 +34,11 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Informações da Pós-Graduação
+
+- Instituição: [Centro Universitário Paraíso - UniFAP](https://www.fapce.edu.br)
+- Pós-Graduação: Desenvolvimento Web
+- Disciplina: Programação para Cliente II (Mód. 15)
+- Data: 27 e 28 de junho de 2020
+- Professor: [Edimo Sousa Silva](https://github.com/edimossilva)
