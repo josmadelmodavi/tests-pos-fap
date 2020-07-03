@@ -20,7 +20,7 @@
         value="localStorage.getItem(email)"
         autofocus="autofocus"
         placeholder="mail@example.com"
-      /><br /><br />
+      />
     </div>
     <div>
       <label>Age:</label><br />
@@ -32,14 +32,14 @@
         min="18"
         max="99"
         placeholder="Enter your age"
-      /><br /><br />
+      />
     </div>
     <div>
       <label>OS:</label><br />
       <select v-model="os" class="form__select_os" name="formOs">
         <option disabled value="">Chose a item</option>
         <option v-for="item in items" :key="item.value">{{ item.value }}</option> </select
-      ><br />
+      >
     </div>
     <p v-show="isFormCompleted" class="form__p_success_message">
       Congratulations!

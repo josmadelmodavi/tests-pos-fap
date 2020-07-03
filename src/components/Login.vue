@@ -18,7 +18,7 @@
         name="formEmail"
         autofocus="autofocus"
         placeholder="mail@example.com"
-      /><br /><br />
+      />
     </div>
     <div>
       <label>Password:</label><br />
@@ -28,7 +28,7 @@
         type="password"
         name="formPassword"
         placeholder="Enter password"
-      /><br /><br />
+      />
     </div>
     <button
       v-show="isLoginCompleted"
@@ -90,7 +90,6 @@ export default {
 </script>
 
 <style>
-.form__p_error_message,
 .form__p_error_message {
   color: dimgrey;
 }
@@ -101,6 +100,11 @@ export default {
   width: 250px;
   height: 30px;
   font-size: 1.1em;
+}
+.form__input_email,
+.form__input_password,
+.form__input_age {
+  margin-bottom: 20px;
 }
 .form__select_os {
   width: 258px;
