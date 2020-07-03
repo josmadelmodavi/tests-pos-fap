@@ -7,8 +7,8 @@
     <p v-show="!isPasswordOk" class="form__p_error_message">
       Note: enter a password longer than 6 characters
     </p>
-    <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
-      Error: This account does not exist</p> -->
+    <p v-show="isInvalidAccount" class="form__p_error_message">
+      Error: This account does not exist</p>
     <div>
       <label>Email:</label><br />
       <input
@@ -30,7 +30,11 @@
         placeholder="Enter password"
       /><br /><br />
     </div>
-    <button v-show="isLoginCompleted" @click="goToUserForm" class="form__button_go_user_form">
+    <button
+      v-show="isLoginCompleted"
+      @click="goToUserForm(email)"
+      class="form__button_go_user_form"
+    >
       Login
     </button>
     <button v-show="!isLoginCompleted" class="form__button_disabled" disabled>
@@ -73,7 +77,8 @@ export default {
     isValidPassword(string) {
       return string.length >= 6;
     },
-    goToUserForm() {
+    goToUserForm(string) {
+      localStorage.email = string;
       this.$router.push({ name: 'UserForm' });
     },
   },

@@ -17,6 +17,7 @@
         class="form__input_email"
         type="email"
         name="formEmail"
+        value="localStorage.getItem(email)"
         autofocus="autofocus"
         placeholder="mail@example.com"
       /><br /><br />
@@ -89,6 +90,18 @@ export default {
     },
     isValidOs(string) {
       return !(string === '');
+    },
+  },
+
+  mounted() {
+    if (localStorage.email) {
+      this.email = localStorage.email;
+    }
+  },
+
+  watch: {
+    email(newEmail) {
+      localStorage.email = newEmail;
     },
   },
 };
