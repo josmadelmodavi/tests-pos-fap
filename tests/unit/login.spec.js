@@ -12,7 +12,7 @@ describe('Login', () => {
       describe('Email and Password are valids', () => {
         it('should be true', () => {
           const wrapper = shallowMount(Login, {
-            data: () => ({ email: 'josmadelmodavi@gmail.com', password: '123456' }),
+            data: () => ({ email: 'email_1@gmail.com', password: '123456' }),
           });
           expect(wrapper.vm.isLoginCompleted).toBe(true);
         });
@@ -21,7 +21,7 @@ describe('Login', () => {
       describe('Email and Password are NOT valids', () => {
         it('should be false', () => {
           const wrapper = shallowMount(Login, {
-            data: () => ({ email: 'josmadelmodavigmailcom', password: '1234' }),
+            data: () => ({ email: 'josmadelmodavi@gmail.com', password: '1234' }),
           });
           expect(wrapper.vm.isLoginCompleted).toBe(false);
         });
@@ -32,14 +32,14 @@ describe('Login', () => {
           describe('When email is valid', () => {
             it('should return true', () => {
               const wrapper = shallowMount(Login);
-              expect(wrapper.vm.isValidEmail('josmadelmodavi@gmail.com')).toBe(true);
+              expect(wrapper.vm.isValidEmail('email_99@gmail.com')).toBe(true);
             });
           });
 
           describe('When email is NOT valid', () => {
             it('should return false', () => {
               const wrapper = shallowMount(Login);
-              expect(wrapper.vm.isValidEmail('josmadelmodavigmailcom')).toBe(false);
+              expect(wrapper.vm.isValidEmail('josmadelmodavi@gmail.com')).toBe(false);
             });
           });
         });

@@ -14,14 +14,14 @@ describe('UserForm', () => {
           describe('When email is valid', () => {
             it('should return true', () => {
               const wrapper = shallowMount(UserForm);
-              expect(wrapper.vm.isValidEmail('josmadelmodavi@gmail.com')).toBe(true);
+              expect(wrapper.vm.isValidEmail('email_100@gmail.com')).toBe(true);
             });
           });
 
           describe('When email is NOT valid', () => {
             it('should return false', () => {
               const wrapper = shallowMount(UserForm);
-              expect(wrapper.vm.isValidEmail('josmadelmodavigmailcom')).toBe(false);
+              expect(wrapper.vm.isValidEmail('email_101@gmail.com')).toBe(false);
             });
           });
         });
