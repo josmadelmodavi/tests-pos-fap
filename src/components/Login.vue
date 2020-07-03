@@ -7,8 +7,8 @@
     <p v-show="!isPasswordOk" class="form__p_error_message">
       Note: enter a password longer than 6 characters
     </p>
-    <p v-show="isInvalidAccount" class="form__p_error_message">
-      Error: This account does not exist</p>
+    <!-- <p v-show="isInvalidAccount" class="form__p_error_message">
+      Error: This account does not exist</p> -->
     <div>
       <label>Email:</label><br />
       <input
@@ -64,6 +64,9 @@ export default {
       const { isValidPassword, password } = this;
       return isValidEmail(email) && isValidPassword(password);
     },
+    // isInvalidAccount() {
+    //
+    // },
   },
 
   methods: {
@@ -72,15 +75,12 @@ export default {
     },
     isValidEmail(string) {
       // const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
-      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|100)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/;
+      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|100)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/; // https://regex101.com/r/I9Nwbh/1
       return !!string.match(emailRegex);
     },
     isValidPassword(string) {
       return string.length >= 6;
     },
-    // isInvalidAccount() {
-    //
-    // },
     goToUserForm(string) {
       localStorage.email = string;
       this.$router.push({ name: 'UserForm' });

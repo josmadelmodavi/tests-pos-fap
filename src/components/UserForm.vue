@@ -83,7 +83,7 @@ export default {
     },
     isValidEmail(string) {
       // const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
-      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|100)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/;
+      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|100)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/; // https://regex101.com/r/I9Nwbh/1
       return !!string.match(emailRegex);
     },
     isValidAge(number) {
