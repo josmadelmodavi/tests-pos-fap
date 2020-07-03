@@ -2,7 +2,7 @@
   <div>
     <h1>Login</h1>
     <p v-show="!isEmailOk" class="form__p_error_message">
-      Note: enter a valid email (e.g.: email_1@gmail.com to email_99@gmail.com)
+      Note: enter a valid email (e.g.: email_1@gmail.com to email_100@gmail.com)
     </p>
     <p v-show="!isPasswordOk" class="form__p_error_message">
       Note: enter a password longer than 6 characters
@@ -72,7 +72,7 @@ export default {
     },
     isValidEmail(string) {
       // const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; // https://www.w3resource.com/javascript/form/email-validation.php
-      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|99)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/;
+      const emailRegex = /(?<![\w\d])email_([1-9]{1,2}[0]?|100)(?![\w\d]+?<![\w\d])@gmail.com(?![\w\d])/;
       return !!string.match(emailRegex);
     },
     isValidPassword(string) {
